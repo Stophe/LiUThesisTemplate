@@ -38,7 +38,7 @@
         \parbox[b][115mm]{145mm}{\centering%
           \parbox{138mm}{\centering%
               \vspace*{15mm}\strut\\%
-              \includegraphics[scale=0.8]{lith-sv-black}\\%
+              \includegraphics[scale=0.8]{template_figures/lith-sv-black}\\%
               \vspace*{15mm}%
           }\\[.5\baselineskip]%
         Institutionen för fysik och mätteknik\\%
@@ -55,7 +55,7 @@
         \parbox[b][115mm]{145mm}{\centering%
           \parbox{138mm}{\centering%
             \vspace*{15mm}\strut\\%
-            \includegraphics[scale=0.8]{lith-en-black}\\%
+            \includegraphics[scale=0.8]{template_figures/lith-en-black}\\%
             \vspace*{15mm}%
           }\\[.5\baselineskip]%
         \@address\\[\baselineskip]%
@@ -124,7 +124,7 @@
         \parbox[b][115mm]{145mm}{\centering%
           \parbox{138mm}{\centering%
             \vspace*{15mm}\strut\\%
-            \includegraphics[scale=0.5]{lith-en-black}\\%
+            \includegraphics[scale=0.5]{template_figures/lith-en-black}\\%
             \vspace*{15mm}%
           }\\[.5\baselineskip]%
         \thesis@division\\%[.2\baselineskip]%
@@ -179,7 +179,7 @@
         \parbox[b][115mm]{145mm}{\centering%
           \parbox{138mm}{\centering%
             \vspace*{15mm}\strut\\%
-            \includegraphics[scale=0.5]{lith-en-black}\\%
+            \includegraphics[scale=0.5]{template_figures/lith-en-black}\\%
             \vspace*{15mm}%
           }\\[.5\baselineskip]%
         \@address\\[\baselineskip]%

@@ -1,0 +1,144 @@
+% Useful options:
+%   english    - a thesis in english
+%   swedish    - a thesis in swedish
+%   ifm        - a thesis at IFM
+%   print      - produce a release version for print (s5)
+%   pdfRelease - produce a pdf release version  (s5 on a4)
+%   ePress     - same as pdfRelease, but add copyright notice
+%   draft      - produce a draft version (s5 on a4, no images drawn)
+%   crop       - draw crop marks (only works in draft mode)
+\documentclass[ english,
+                10pt,
+                ifm,
+                print
+                ]{liuthesis}
+\usepackage[T1]{fontenc} % Needed for swedish characters
+\usepackage[
+    url=false,
+    isbn=false,
+    doi=false,
+    style=numeric-comp,
+    sorting=none,
+    backend=bibtex,
+    ]{biblatex} % A more manageable bibliography
+\usepackage{pdfpages} % Used to simplify inclusion of pdf pages
+\usepackage{graphicx} % Used for most standard figure manipulations
+\usepackage[Sonny]{fncychap}
+\usepackage{csquotes}
+\usepackage{mathtools} % Includes most stuff needed for equations 
+%\usepackage{subfigure} % Used to create subfigures
+%\usepackage{rotating} % Used for rotating figures
+%\usepackage{miller} % Used to write miller indices better
+%\usepackage{commath}
+%\usepackage{layouts}
+%\usepackage{enumitem}% http://ctan.org/pkg/enumitem
+%\usepackage{braket} % Used for bracket notation
+\usepackage{hyperref} % Used to create clickable links in the document
+\hypersetup % Used to set the colors for the links
+	{
+		colorlinks,%
+		citecolor=black,%
+		linkcolor=black,%
+		urlcolor=black,%
+	}
+\usepackage{lipsum} % Used to create example text for template
+
+% Enter all bibtex-files
+\bibliography{example_bibfile}
+\AtEveryBibitem{\clearlist{language}} % clears language
+\AtEveryBibitem{\clearfield{note}}    % clears notes
+
+%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%
+%
+% REMEMBER!
+% After final version is sent to print, make NO MORE ALTERATIONS IN THE TEXT!
+% (not even correcting misprints)
+% Any further alterations, made for Ph.D., should be commented out (or marked in print)
+%
+%
+%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%
+
+% One of MSc, lic, and PhD.
+\thesisCategory{lic}
+
+% Title of thesis.{Swedish title}{English title} Tip: http://titlecapitalization.com/
+\title{<Svensk titel>}{<English title>}
+
+% Author of thesis.
+\author{<Author>}
+
+% Date of defense. Month-Day-Year
+\thesisDate{10}{3}{2014}
+
+% Series of this thesis and various identifiers.  Contact your local library.
+\series{Link\"{o}ping Studies in Science and Technology \\
+  Thesis No. <thesis number>}
+\ISBN{<ISBN>}
+\ISSN{<ISSN>}
+%\ISRN{} Is not used
+
+
+% Print Shop
+\printshop{Printed by LiU-Tryck 2014}
+
+% \frontpageImage{Add a description of the front page here, if necessary.}
+
+
+\thesisDivision{<Division>}
+
+\supervisor{<Supervisor>}% Only for MSc.
+
+%\subject{}
+%\keywords{}
+
+% DEDICATION
+%\dedication{}
+
+% Abstract
+\input{sections/abstract}
+
+% Acknowledgement
+\input{sections/acknowledgement}
+
+\begin{document}
+\makeFrontMatter
+
+
+% Include chapters here
+\include{sections/introduction}
+\include{sections/methods}
+
+% If desired, list of abbreviations
+%\include{sections/abbreviations}
+
+% Set up and insert bibliography
+%\bibliographystyle{unsrt}
+%\bibliographystyle{jcp}
+\printbibliography
+
+\include{sections/results}
+
+
+
+% Actual papers
+\papers
+
+\paper{Volume matching condition to establish the enhanced piezoelectricity in ternary (Sc,Y)$_{0.5}$(Al,Ga,In)$_{0.5}$N alloys\label{paper:Volume_matching}}
+{{\scshape C.~Tholander} \\ {\scshape I.~A.~Abrikosov} \\ {\scshape L.~Hultman}
+\\ {\scshape F.~Tasn\'{a}di}}
+{Physical Review B, \textbf{87}, 94107 (2013)\\
+\vfill Reprinted with permission. \copyright2013 American Physical Society.}
+%\includepdf[pages={-},pagecommand=]{papers/paper1.pdf}
+\includepdf[pages={1-1},pagecommand=]{papers/paper1.pdf} % Include only the first page to save time while compiling
+
+
+% If you want an appendix
+%\appendix
+%\include{appendix}
+
+% If MSc thesis (Probably not used anymore)
+%\makeLibraryPage
+
+\end{document}

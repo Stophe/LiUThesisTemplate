@@ -279,8 +279,8 @@
 
 \newcommand{\@abstract}{\@latex@warning@no@line{No \noexpand\abstract given}}%
 \newcommand{\abstract}[2]{%
-  \renewcommand{\@abstract}{\ignorespacesafterend\noindent #2\unskip}%
-  \newcommand{\swe@abstract}{\ignorespacesafterend\noindent #1\unskip}}%
+  \renewcommand{\@abstract}{\ignorespacesafterend\noindent #1\unskip}%
+  \newcommand{\swe@abstract}{\ignorespacesafterend\noindent #2\unskip}}%
 
 \newcommand{\@acknowledgements}{%
   \@latex@warning@no@line{No \noexpand\acknowledgements given}}%

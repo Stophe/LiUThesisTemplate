@@ -444,7 +444,7 @@
   \clearpage \thispagestyle{plain}%
 %  \vspace*{-3\baselineskip}%
   \@makeschapterhead{Abstract}  % MIGHT CHANGE!!!
-  \vspace*{-3.4\baselineskip}%
+  %\vspace*{-3.4\baselineskip}%
   \@abstract%
   \cleardoublepage
   \vfill \sbox{\@tempboxa}{\mbox{\swe@abstract}}%

@@ -278,7 +278,7 @@
   \ifliuthesis@hyperref\hypersetup{pdfkeywords={#1}}\fi}%
 
 \newcommand{\@abstract}{\@latex@warning@no@line{No \noexpand\abstract given}}%
-\newcommand{\abstract}[2][]{%
+\newcommand{\abstract}[2]{%
   \renewcommand{\@abstract}{\ignorespacesafterend\noindent #2\unskip}%
   \newcommand{\swe@abstract}{\ignorespacesafterend\noindent #1\unskip}}%
 
@@ -671,7 +671,7 @@
    \addcontentsline{toc}{chapter}%
                    {\papername\space\thePaper}%
    \markboth{\papername\space\thePaper}{\papername\space\thePaper}
-   \chapter*{\@paperapp\space\thePaper} 
+   \chapter*{\@paperapp\space\thePaper}
    \thispagestyle{paperhead}
    {\centering\Large \bfseries #1\par\nobreak}
    \vspace*{2\baselineskip}%
@@ -863,8 +863,8 @@
     \else
       \makeDedication \thispagestyle{empty} \cleardoublepage%
     \fi
-    \pagestyle{headings} 
-\makeAbstract 
+    \pagestyle{headings}
+\makeAbstract
 \thispagestyle{empty} \cleardoublepage%
     \makeAcknowledgements \thispagestyle{empty} \cleardoublepage%
     \tableofcontents%
@@ -928,4 +928,3 @@
 \endinput
 %%
 %% End of file `liuthesis.cls'.
-

@@ -25,7 +25,7 @@
 \usepackage{graphicx} % Used for most standard figure manipulations
 \usepackage[Sonny]{fncychap}
 \usepackage{csquotes}
-\usepackage{mathtools} % Includes most stuff needed for equations 
+\usepackage{mathtools} % Includes most stuff needed for equations
 %\usepackage{subfigure} % Used to create subfigures
 %\usepackage{rotating} % Used for rotating figures
 %\usepackage{miller} % Used to write miller indices better
@@ -90,6 +90,8 @@
 
 \supervisor{<Supervisor>}% Only for MSc.
 
+\membership{Agora Materiae}
+
 %\subject{}
 %\keywords{}
 
@@ -109,17 +111,14 @@
 % Include chapters here
 \include{sections/introduction}
 \include{sections/methods}
-
+\include{sections/results}
 % If desired, list of abbreviations
 %\include{sections/abbreviations}
 
 % Set up and insert bibliography
 %\bibliographystyle{unsrt}
 %\bibliographystyle{jcp}
-\printbibliography
-
-\include{sections/results}
-
+\printbibliography[heading=bibintoc]%
 
 
 % Actual papers

@@ -848,7 +848,7 @@
 \fi
 \ifx\thesis@category\@lic %thesis@category
     \def\acknowledgementsname{Acknowledgements}%
-    \makeLicFrontPage \thispagestyle{empty} \cleardoublepage%
+    %\makeLicFrontPage \thispagestyle{empty} \cleardoublepage%
     \frontmatter \makeLicTitlePage \thispagestyle{empty} \cleardoublepage%
     \ifx\@ded\undefined
     \else

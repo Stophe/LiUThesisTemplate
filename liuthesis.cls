@@ -295,8 +295,9 @@
 % \newcommand*{\AND}{\\\>\bfseries}%
 \newcommand*{\AT}{\\\>\>\small}%
 
-\newcommand*{\@membership}{\@latex@warning@no@line{No \noexpand\membership given}}%
-\newcommand*{\membership}[1]{\renewcommand{\@membership}{#1}}%
+\newcommand*{\@graduateschool}{\@latex@warning@no@line{No \noexpand\graduateschool given}}%
+\newcommand*{\graduateschool}[1]{\renewcommand{\@graduateschool}{#1}
+\def\@gradschool{gradschool}}%
 
 %%%%%%%%%%%%%%%%%%%%%%%%
 %%    Library page    %%
@@ -874,10 +875,18 @@
 \fi
 }
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%       Agora Meteriae membership        %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%       Graduate school        %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\printGraduateschool}{%
+  \ifx\@gradschool\undefined
+  \else
+  \parbox{\textwidth}{
+  During the course of research underlying this thesis, \@author\,
+  was enrolled in \@graduateschool, a multidiciplinary doctoral program at Linköping University, Sweden.
+  }
+  \fi
+}
 %%%%%%%%%%%%%%%%%%%%%%%%
 %%       Other        %%
 %%%%%%%%%%%%%%%%%%%%%%%%

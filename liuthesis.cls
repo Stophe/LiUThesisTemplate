@@ -186,11 +186,11 @@
 \RequirePackage{graphicx}
 \RequirePackage[%
   twoside, papersize={165mm,242mm}, body={125mm,195mm},%
-  bindingoffset=4mm, marginparsep=3mm, portrait,%
+  bindingoffset=8mm, marginparsep=3mm, portrait,%
   twocolumn=false, vmarginratio={4:5}, verbose]{geometry}% [2002/07/08]
 
 % \RequirePackage[nodriver]{crop}[2001/11/16]
-\RequirePackage{crop}[2001/11/16]
+\RequirePackage{crop}%[2001/11/16]
 \RequirePackage[intlimits]{amsmath}
 \RequirePackage{amsfonts, amssymb}
 
@@ -295,6 +295,8 @@
 % \newcommand*{\AND}{\\\>\bfseries}%
 \newcommand*{\AT}{\\\>\>\small}%
 
+\newcommand*{\@membership}{\@latex@warning@no@line{No \noexpand\membership given}}%
+\newcommand*{\membership}[1]{\renewcommand{\@membership}{#1}}%
 
 %%%%%%%%%%%%%%%%%%%%%%%%
 %%    Library page    %%
@@ -857,7 +859,7 @@
     #1 \mainmatter%
 \fi
 \ifx\thesis@category\@PhD %thesis@category
-    \def\acknowledgementsname{Preface}%
+    \def\acknowledgementsname{Acknowledgements}%
     \frontmatter \makePhDTitlePage \thispagestyle{empty} \cleardoublepage%
     \ifx\@ded\undefined
     \else
@@ -872,7 +874,9 @@
 \fi
 }
 
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%       Agora Meteriae membership        %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%
 %%       Other        %%

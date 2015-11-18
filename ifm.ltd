@@ -147,6 +147,7 @@
   {\centering\parbox{.6\textwidth}{\thesis@frontpageImage}\\}%
   \vspace*{\stretch{1 }}%
   \noindent\parbox{\textwidth}{\centering%
+    \@membership\\%
     \copyright ~\@author\\%
     ISBN \thesis@ISBN\\%
     ISSN \thesis@ISSN\\[\baselineskip]%
@@ -182,6 +183,7 @@
             \includegraphics[scale=0.5]{template_figures/lith-en-black}\\%
             \vspace*{15mm}%
           }\\[.5\baselineskip]%
+          \thesis@division\\
         \@address\\[\baselineskip]%
         Link{\"o}ping \thesis@year%
       }\medskip%

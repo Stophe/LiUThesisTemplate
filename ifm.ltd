@@ -124,7 +124,7 @@
         \parbox[b][115mm]{145mm}{\centering%
           \parbox{138mm}{\centering%
             \vspace*{15mm}\strut\\%
-            \includegraphics[scale=0.5]{template_figures/lith-en-black}\\%
+            \includegraphics[scale=0.75]{template_figures/LiU_primary_black}\\%
             \vspace*{15mm}%
           }\\[.5\baselineskip]%
         \thesis@division\\%[.2\baselineskip]%
@@ -143,11 +143,12 @@
 
 \newcommand*{\makeLicTitlePage}{%
   \makeLicFrontPage%
-  \vspace*{\stretch{3 }}%
-  {\centering\parbox{.6\textwidth}{\thesis@frontpageImage}\\}%
-  \vspace*{\stretch{1 }}%
-  \noindent\parbox{\textwidth}{\centering%
-    \@membership\\%
+  \vspace*{\stretch{0.5 }}%
+  {\noindent\parbox{\textwidth}{\thesis@frontpageImage}}%
+  \\[2\baselineskip]
+  \printGraduateschool%
+  \vfill
+  \noindent\parbox{\textwidth}{%
     \copyright ~\@author\\%
     ISBN \thesis@ISBN\\%
     ISSN \thesis@ISSN\\[\baselineskip]%
@@ -180,9 +181,11 @@
         \parbox[b][115mm]{145mm}{\centering%
           \parbox{138mm}{\centering%
             \vspace*{15mm}\strut\\%
-            \includegraphics[scale=0.5]{template_figures/lith-en-black}\\%
+            \includegraphics[scale=0.75]{template_figures/LiU_primary_black}\\%
             \vspace*{15mm}%
           }\\[.5\baselineskip]%
+          \vfill
+          %\printGraduateschool%
           \thesis@division\\
         \@address\\[\baselineskip]%
         Link{\"o}ping \thesis@year%
@@ -190,10 +193,13 @@
     \end{minipage}%
   }%
   \endgroup \clearpage%
-  \vspace*{\stretch{3 }}%
-  {\centering\parbox{.6\textwidth}{\thesis@frontpageImage}\\}%
-  \vspace*{\stretch{1 }}%
-  \noindent\parbox{\textwidth}{\centering%
+  \vspace*{\stretch{0.5 }}%
+  {\noindent\parbox{\textwidth}{\thesis@frontpageImage}}%
+  \\[2\baselineskip]
+  \printGraduateschool%
+  \vfill
+  \noindent\parbox{\textwidth}{%
+    \copyright ~\@author\\%
     ISBN \thesis@ISBN\\%
     ISSN \thesis@ISSN\\[\baselineskip]%
     \thesis@printshop}%

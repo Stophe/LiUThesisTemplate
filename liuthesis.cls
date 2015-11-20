@@ -14,10 +14,6 @@
 \RequirePackage{babel}
 \RequirePackage{theorem}
 \RequirePackage{color}
-\newcommand*{\liuthesisDefinition}[2]{%
-  \ClassInfo{liuthesis}{Loaded definition file '\CurrentOption.ltd'}%
-  \newcommand*{\thesis@divTAG}{#1}%
-  \newcommand*{\@address}{#2}}
 
 \newif\ifliuthesis@hyperref
 \liuthesis@hyperreffalse
@@ -65,6 +61,10 @@
 \def\@MSc{MSc}
 \def\@lic{lic}
 \def\@PhD{PhD}
+
+% Used to keep track of department
+\def\@IFM{IFM}
+\def\@IEI{IEI}
 
 
 %%%%%%%%%%%%%%%%%%%%%
@@ -172,12 +172,6 @@
   {}{\PassOptionsToClass{\CurrentOption}{book}\OptionNotUsed}}
 \ProcessOptions\relax
 
-\ifx\thesis@divTAG\relax
-  \ClassError{liuthesis}{No division definition found.}
-\else
-  \ClassInfo{liuthesis}{Loading division definition \thesis@divTAG.}
-\fi
-
 \LoadClass[twoside]{book}
 
 \DeclareRobustCommand\em%
@@ -228,6 +222,20 @@
 \newcommand*{\thesis@division}{%
   \@latex@warning@no@line{No \noexpand\thesisDivision given}}%
 \newcommand*{\thesisDivision}[1]{\renewcommand*{\thesis@division}{#1}}%
+
+\newcommand*{\thesis@departement}{%
+  \@latex@warning@no@line{No \noexpand\thesisDepartement given}}%
+\newcommand*{\thesisDepartement}[1]{\renewcommand*{\thesis@departement}{#1}}%
+
+\newcommand{\departement}{%
+  \ifx\thesis@departement\@IFM
+  Department of Physics, Chemistry, and Biology (IFM)
+  \fi
+  \ifx\thesis@departement\@IEI
+  Departement of Management and Engineering (IEI)
+  \fi}%
+
+\newcommand*{\@address}{Link{\"o}ping University, SE-581~83 Link{\"o}ping, Sweden}
 
 \newcommand*{\thesis@subject}{%
   \@latex@warning@no@line{No \noexpand\subject given}}%
@@ -942,6 +950,202 @@
 
 \renewcommand{\footnoterule}{\vspace*{-3\p@}
   \noindent\rule{.5\textwidth}{.5\p@}\vspace*{2.6\p@}
+}
+
+%%%%%%%%%
+%% MSC %%
+%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%     Front page     %%
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\makeMScFrontPage}{%
+  \begingroup\normalfont%
+  \clearpage%
+  %
+  \thispagestyle{empty}%
+  \vspace*{-15mm}\hspace*{-24.5mm}%
+  \raisebox{\z@}[\z@][\z@]{%
+    \begin{minipage}[t][230mm]{161.5mm}%
+      \centering%
+      \ifLanguageInUse{swedish}{%
+        {\LARGE Institutionen för Fysik, Kemi och Biologi}\\[\stretch{2 }]%
+        {\Large Examensarbete}\\%
+        \vspace*{\stretch{3 }}%
+        {\parbox{13cm}{\centering\Large\bfseries\swe@title}}\\[\stretch{3 }]%
+        {\Large \@author}\\[\baselineskip]%
+        \thesis@ISRN\\[.5\baselineskip]%
+        \vspace*{\stretch{2 }}%
+        \parbox[b][115mm]{145mm}{\centering%
+          \parbox{138mm}{\centering%
+              \vspace*{15mm}\strut\\%
+              \includegraphics[scale=0.8]{template_figures/lith-sv-black}\\%
+              \vspace*{15mm}%
+          }\\[.5\baselineskip]%
+        Institutionen för fysik och mätteknik\\%
+        Linköpings universitet\\%
+        581~83 Linköping%
+        }\medskip}{%
+        {\LARGE Department of Physics, Chemistry and Biology}\\[\stretch{2 }]%
+        {\Large Master's Thesis}\\%
+        \vspace*{\stretch{3 }}%
+        {\parbox{13cm}{\centering\Large\bfseries\@title}}\\[\stretch{3 }]%
+        {\Large \@author}\\[\baselineskip]%
+        \thesis@ISRN\\[.5\baselineskip]%
+        \vspace*{\stretch{2 }}%
+        \parbox[b][115mm]{145mm}{\centering%
+          \parbox{138mm}{\centering%
+            \vspace*{15mm}\strut\\%
+            \includegraphics[scale=0.8]{template_figures/lith-en-black}\\%
+            \vspace*{15mm}%
+          }\\[.5\baselineskip]%
+        \@address\\[\baselineskip]%
+      }\medskip}%
+    \end{minipage}%
+  }%
+  \endgroup \clearpage%
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%     Title page     %%
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand*{\makeMScTitlePage}{%
+  \clearpage \thispagestyle{empty} \normalfont%
+  \vspace*{-25mm}\hspace*{-27.8mm}\hspace*{3mm}%
+  \raisebox{\z@}[\z@][\z@]{%
+    \begin{minipage}[t][230mm]{158.5mm}%
+      \centering \vspace*{\stretch{1 }}%
+      \ifLanguageInUse{swedish}{Examensarbete}{Master's Thesis}\\%
+      \thesis@ISRN\\[.5\baselineskip]%
+%      {\large \thesis@subject}\\[1.5\baselineskip]%
+      \vspace*{\stretch{1 }}%
+      {\parbox{13cm}{\centering\noindent\Large\bfseries%
+          \ifLanguageInUse{swedish}{\swe@title}{\@title}}}\\%
+      \vspace*{\stretch{1 }}%
+      {\large \@author}\\[\baselineskip]%
+      \vspace*{\stretch{4 }}%
+      \parbox{10cm}{\raggedright%
+        \rule{10cm}{\z@}%
+        \begin{tabbing}%
+          \hspace*{25mm}\=\quad\=\kill%
+          \ifLanguageInUse{swedish}{Handledare:}{Adviser:}\>\bfseries
+          \@supervisor\\[.5\baselineskip]%
+          \ifLanguageInUse{swedish}{Examinator:}{Examiner:}\>\bfseries \@examiner%
+        \end{tabbing}%
+      }\\[.5\baselineskip]%
+      Linköping, \thesis@day\ \monthName{\thesis@month}, \thesis@year%
+    \end{minipage}%
+  } \clearpage%
+}
+
+
+%%%%%%%%%
+%% Lic %%
+%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%     Front page     %%
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\makeLicFrontPage}{%
+  \begingroup\normalfont%
+  \clearpage%
+  %
+  \thispagestyle{empty}%
+  \vspace*{-15mm}\hspace*{-24.5mm}%
+  \raisebox{\z@}[\z@][\z@]{%
+    \begin{minipage}[t][220mm]{161.5mm}%
+      \centering%
+        {\large \thesis@series}\\%
+        \vspace*{\stretch{1 }}%
+        {\parbox{13cm}{\centering\Large\bfseries\@title}}\\[\stretch{1 }]%
+        {\Large \@author}\\%
+        \vspace*{\stretch{1 }}%
+        \parbox[b][115mm]{145mm}{\centering%
+          \parbox{138mm}{\centering%
+            \vspace*{40mm}\strut\\%
+            \includegraphics[scale=0.75]{template_figures/LiU_primary_black}\\%
+            \vspace*{15mm}%
+          }\\[.5\baselineskip]%
+        \thesis@division\\%[.2\baselineskip]%
+        \departement\\%
+       % \thesis@ISRN\\[.2\baselineskip]% Is not used anymore
+        \@address\\[\baselineskip]%
+        Link{\"o}ping \thesis@year%
+      }\medskip%
+    \end{minipage}%
+  }%
+  \endgroup \clearpage%
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%     Title page     %%
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand*{\makeLicTitlePage}{%
+  \makeLicFrontPage%
+  \vspace*{\stretch{0.5 }}%
+  {\noindent\parbox{\textwidth}{\thesis@frontpageImage}}%
+  \\[2\baselineskip]
+  \printGraduateschool%
+  \vfill
+  \noindent\parbox{\textwidth}{%
+    \copyright ~\@author\\%
+    ISBN \thesis@ISBN\\%
+    ISSN \thesis@ISSN\\[\baselineskip]%
+    \thesis@printshop}%
+}
+
+
+%%%%%%%%%
+%% PhD %%
+%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%     Title page     %%
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\makePhDTitlePage}{%
+  \begingroup\normalfont%
+  \clearpage%
+  %
+  \thispagestyle{empty}%
+  \vspace*{-15mm}\hspace*{-24.5mm}%
+  \raisebox{\z@}[\z@][\z@]{%
+    \begin{minipage}[t][220mm]{161.5mm}%
+      \centering%
+        {\large \thesis@series}\\%
+        \vspace*{\stretch{1 }}%
+        {\parbox{13cm}{\centering\LARGE\bfseries\@title}}\\[\stretch{1 }]%
+        {\Large \@author}\\%
+        \vspace*{\stretch{1 }}%
+        \parbox[b][115mm]{145mm}{\centering%
+          \parbox{138mm}{\centering%
+            \vspace*{40mm}\strut\\%
+            \includegraphics[scale=0.75]{template_figures/LiU_primary_black}\\%
+            \vspace*{15mm}%
+          }\\[.5\baselineskip]%
+          \vfill
+          \thesis@division\\
+          \departement\\
+        \@address\\[\baselineskip]%
+        Link{\"o}ping \thesis@year%
+      }\medskip%
+    \end{minipage}%
+  }%
+  \endgroup \clearpage%
+  \vspace*{\stretch{0.5 }}%
+  {\noindent\parbox{\textwidth}{\thesis@frontpageImage}}%
+  \\[2\baselineskip]
+  \printGraduateschool%
+  \vfill
+  \noindent\parbox{\textwidth}{%
+    \copyright ~\@author\\%
+    ISBN \thesis@ISBN\\%
+    ISSN \thesis@ISSN\\[\baselineskip]%
+    \thesis@printshop}%
 }
 
 %% \CharacterTable

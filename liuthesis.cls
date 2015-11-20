@@ -31,6 +31,7 @@
 
 \DeclareOption{english}{%
   \def\acknowledgementsname{Acknowledgements}%
+  \def\prefacename{Preface}
   \def\corollaryname{Corollary}
   \def\definitionname{Definition}
   \def\examplename{Example}
@@ -299,6 +300,11 @@
 \newcommand*{\graduateschool}[1]{\renewcommand{\@graduateschool}{#1}
 \def\@gradschool{gradschool}}%
 
+\newcommand{\@preface}{%
+  \@latex@warning@no@line{No \noexpand\preface given}}%
+\newcommand{\preface}[1]{%
+  \renewcommand{\@preface}{\ignorespacesafterend\noindent#1\unskip}}%
+
 %%%%%%%%%%%%%%%%%%%%%%%%
 %%    Library page    %%
 %%%%%%%%%%%%%%%%%%%%%%%%
@@ -463,6 +469,16 @@
   \vfill \clearpage%
 }
 
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%  Preface           %%
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand*{\makePreface}{%
+  \clearpage%
+  \chapter*{\prefacename}%
+  \@preface%
+  \clearpage%
+}
 
 %%%%%%%%%%%%%%%%%%%%%%%%
 %%  Copyright notice  %%
@@ -868,6 +884,11 @@
     \fi
     \pagestyle{headings}
 \makeAbstract
+\thispagestyle{empty} \cleardoublepage%
+    \ifx\@preface\undefined
+    \else
+      \makePreface \thispagestyle{empty} \cleardoublepage%
+    \fi
 \thispagestyle{empty} \cleardoublepage%
     \makeAcknowledgements \thispagestyle{empty} \cleardoublepage%
     \tableofcontents%
